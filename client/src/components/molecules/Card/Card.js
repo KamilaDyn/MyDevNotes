@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import Heading from 'components/atoms/Heading/Heading';
-import Button from 'components/atoms/Button/Button';
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import Paragraph from "components/atoms/Paragraph/Paragraph";
+import Heading from "components/atoms/Heading/Heading";
+import Button from "components/atoms/Button/Button";
+import LinkIcon from "assets/icons/url.svg";
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -18,7 +19,8 @@ const StyledWrapper = styled.div`
 const InnerWrapper = styled.div`
   position: relative;
   padding: 17px 30px;
-  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  background-color: ${({ activeColor, theme }) =>
+    activeColor ? theme[activeColor] : "white"};
 
   :first-of-type {
     z-index: 9999;
@@ -42,29 +44,47 @@ const DateInfo = styled(Paragraph)`
 const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
 `;
+const StyledLinkButton = styled.a`
+  display: block;
+  width: 47px;
+  height: 47px;
+  border-radius: 50px;
+  background: white url(${LinkIcon}) no-repeat;
+  background-size: 60%;
+  background-position: 50%;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
+const StyledParagraph = styled(Paragraph)`
+  font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+`;
 
-const Card = ({ cardType }) => (
+const Card = ({ cardType, title, created, content, articleUrl, name }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Hello World</StyledHeading>
-      <DateInfo>3 days</DateInfo>
+      <StyledHeading>{title}</StyledHeading>
+      <DateInfo>{created}</DateInfo>
+      {cardType === "dev_article" && <StyledLinkButton href={articleUrl} />}
+      {cardType === "dev_project" && (
+        <StyledParagraph>Responsible: {name}</StyledParagraph>
+      )}
     </InnerWrapper>
     <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
-        repellendus illum
-      </Paragraph>
+      <Paragraph>{content}</Paragraph>
       <Button secondary>REMOVE</Button>
     </InnerWrapper>
   </StyledWrapper>
 );
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['note', 'devarticle', 'devproject']),
+  cardType: PropTypes.oneOf(["note", "devarticle", "devproject"]),
 };
 
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: "note",
 };
 
 export default Card;
