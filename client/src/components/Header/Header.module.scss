@@ -1,0 +1,15 @@
+$backgroundColor: rgb(19, 19, 85);
+.wrapper {
+  width: 100vw;
+  height: 10vh;
+  min-height: 100px;
+  background-color: $backgroundColor;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  width: 200px;
+  height: 80px;
+}

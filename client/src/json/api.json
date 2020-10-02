@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "author": "Paweł",
+    "title": "Coś nowego",
+    "description": "lorem ipsum lorem ipsum loremipsume, lorem ipsum lorem ipsum",
+    "link": "http://facebook.com"
+  },
+  {
+    "id": 2,
+    "author": "Anna",
+    "title": "Coś starego",
+    "description": "lorem ipsum lorem ipsum loremipsume, lorem ipsum lorem ipsum",
+    "link": "http://facebook.com"
+  }
+]
