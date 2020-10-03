@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 import styled, { css } from "styled-components";
 import Paragraph from "components/atoms/Paragraph/Paragraph";
 import Heading from "components/atoms/Heading/Heading";
@@ -62,29 +63,60 @@ const StyledParagraph = styled(Paragraph)`
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
-const Card = ({ cardType, title, created, content, articleUrl, name }) => (
-  <StyledWrapper>
-    <InnerWrapper activeColor={cardType}>
-      <StyledHeading>{title}</StyledHeading>
-      <DateInfo>{created}</DateInfo>
-      {cardType === "dev_article" && <StyledLinkButton href={articleUrl} />}
-      {cardType === "dev_project" && (
-        <StyledParagraph>Responsible: {name}</StyledParagraph>
-      )}
-    </InnerWrapper>
-    <InnerWrapper flex>
-      <Paragraph>{content}</Paragraph>
-      <Button secondary>REMOVE</Button>
-    </InnerWrapper>
-  </StyledWrapper>
-);
+class Card extends Component {
+  state = {
+    redirect: false,
+  };
+  handleCardClick = () => this.setState({ redirect: true });
+  render() {
+    const {
+      id,
+      cardType,
+      created,
+      name,
+      articleUrl,
+      content,
+      title,
+    } = this.props;
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to={`${cardType}/${id}`} />;
+    }
+    return (
+      <StyledWrapper onClick={this.handleCardClick}>
+        <InnerWrapper activeColor={cardType}>
+          <StyledHeading>{title}</StyledHeading>
+          <DateInfo>{created}</DateInfo>
+          {cardType === "dev_articles" && (
+            <StyledLinkButton href={articleUrl} />
+          )}
+          {cardType === "dev_projects" && (
+            <StyledParagraph>Responsible: {name}</StyledParagraph>
+          )}
+        </InnerWrapper>
+        <InnerWrapper flex>
+          <Paragraph>{content}</Paragraph>
+          <Button secondary>REMOVE</Button>
+        </InnerWrapper>
+      </StyledWrapper>
+    );
+  }
+}
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(["note", "devarticle", "devproject"]),
+  id: PropTypes.number.isRequired,
+  cardType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
-  cardType: "note",
+  cardType: "notes",
+  name: null,
+  articleUrl: null,
 };
 
 export default Card;

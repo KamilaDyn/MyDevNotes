@@ -1,9 +1,10 @@
 import React from "react";
-import UserPageTemplate from "templates/UserPageTemplate";
+import GridTemplate from "templates/GridTemplate";
 import Card from "components/molecules/Card/Card";
 
 const devArticles = [
   {
+    id: 1,
     title: "React in 5h ",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
@@ -12,6 +13,7 @@ const devArticles = [
     created: "1 day",
   },
   {
+    id: 2,
     title: "React for Begginners",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
@@ -20,6 +22,7 @@ const devArticles = [
     created: "3 days",
   },
   {
+    id: 3,
     title: "React to Formik",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
@@ -28,6 +31,7 @@ const devArticles = [
     created: "7 days",
   },
   {
+    id: 4,
     title: "Advanced React",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
@@ -38,18 +42,19 @@ const devArticles = [
 ];
 
 const DevArticles = () => (
-  <UserPageTemplate pageType="dev_article">
-    {devArticles.map((item) => (
+  <GridTemplate pageType="devarticles">
+    {devArticles.map(({ title, content, articleUrl, created, id }) => (
       <Card
-        cardType="dev_article"
-        title={item.title}
-        content={item.content}
-        articleUrl={item.articleUrl}
-        created={item.created}
-        key={item.title}
+        cardType="devarticles"
+        title={title}
+        content={content}
+        articleUrl={articleUrl}
+        created={created}
+        key={id}
+        id={id}
       />
     ))}
-  </UserPageTemplate>
+  </GridTemplate>
 );
 
 export default DevArticles;

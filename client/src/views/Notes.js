@@ -1,51 +1,51 @@
 import React from "react";
-import UserPageTemplate from "templates/UserPageTemplate";
+import GridTemplate from "templates/GridTemplate";
 import Card from "components/molecules/Card/Card";
 
-const devProjects = [
+const notes = [
   {
-    title: "Vue.js ",
+    id: 1,
+    title: "React make me laught",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
     created: "1 day",
-    name: "hello_roman",
   },
   {
-    title: "To do app",
+    id: 2,
+    title: "Wie ist React?",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
     created: "1 day",
-    name: "My group",
   },
   {
-    title: "Forms to create",
+    id: 3,
+    title: "I fallow in love in React",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
     created: "5 days",
-    name: "Anna, Mike",
   },
   {
-    title: "Tech doucmentation",
+    id: 4,
+    title: "My React to that",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
     created: "10 days",
-    name: "Joanna",
   },
 ];
 
-const DevProjects = () => (
-  <UserPageTemplate pageType="dev_project">
-    {devProjects.map((item) => (
+const Notes = () => (
+  <GridTemplate pageType="notes">
+    {notes.map(({ title, content, created, id }) => (
       <Card
-        cardType="dev_project"
-        title={item.title}
-        content={item.content}
-        name={item.name}
-        created={item.created}
-        key={item.title}
+        cardType="notes"
+        title={title}
+        content={content}
+        created={created}
+        id={id}
+        key={id}
       />
     ))}
-  </UserPageTemplate>
+  </GridTemplate>
 );
 
-export default DevProjects;
+export default Notes;

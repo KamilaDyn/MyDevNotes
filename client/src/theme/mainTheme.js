@@ -1,7 +1,7 @@
 export const theme = {
-  note: "hsl(62, 91%, 87%)",
-  dev_article: "	hsl(34, 80%, 82%)",
-  dev_project: "hsl(115, 72%, 87%)",
+  notes: "hsl(62, 91%, 87%)",
+  devarticles: "	hsl(34, 80%, 82%)",
+  devprojects: "hsl(115, 72%, 87%)",
   grey100: "hsl(0, 0%, 96%)",
   grey200: "hsl(0, 0%, 90%)",
   grey300: "hsl(0, 0%, 70%)",

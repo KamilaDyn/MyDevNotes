@@ -50,29 +50,13 @@ const Sidebar = ({ pageType }) => (
     <StyledLogoLinks to="/" icon={logoIcon} />
     <StyledLinkList>
       <li>
-        <ButtonIcon
-          exact
-          as={NavLink}
-          to="/"
-          icon={penIcon}
-          activeClass="active"
-        />
+        <ButtonIcon exact as={NavLink} to="/" icon={penIcon} />
       </li>
       <li>
-        <ButtonIcon
-          as={NavLink}
-          to="/devarticles"
-          icon={articleIcon}
-          activeClass="active"
-        />
+        <ButtonIcon as={NavLink} to="/devarticles" icon={articleIcon} />
       </li>
       <li>
-        <ButtonIcon
-          as={NavLink}
-          to="/devprojects"
-          icon={projectIcon}
-          activeClass="active"
-        />
+        <ButtonIcon as={NavLink} to="/devprojects" icon={projectIcon} />
       </li>
     </StyledLinkList>
     <StyledLogoutButton as={NavLink} to="/login" icon={LogoutIcon} />
