@@ -77,6 +77,7 @@ class Card extends Component {
       articleUrl,
       content,
       title,
+      pageType,
     } = this.props;
     const { redirect } = this.state;
     if (redirect) {
@@ -96,7 +97,9 @@ class Card extends Component {
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button secondary>REMOVE</Button>
+          <Button secondary activeColor={pageType}>
+            REMOVE
+          </Button>
         </InnerWrapper>
       </StyledWrapper>
     );

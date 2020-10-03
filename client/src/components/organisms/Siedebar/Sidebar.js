@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
 import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
 import penIcon from "assets/icons/pen.svg";
 import projectIcon from "assets/icons/project.svg";
@@ -16,7 +17,7 @@ const StyledWrapper = styled.nav`
   width: 150px;
   height: 100vh;
   background-color: ${({ activeColor, theme }) =>
-    activeColor ? theme[activeColor] : theme.note};
+    activeColor ? theme[activeColor] : theme.notes};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -63,4 +64,11 @@ const Sidebar = ({ pageType }) => (
   </StyledWrapper>
 );
 
+Sidebar.propTypes = {
+  pageType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
+};
+
+Sidebar.defaultProps = {
+  pageType: "notes",
+};
 export default Sidebar;
