@@ -8,15 +8,20 @@ import Paragraph from "components/atoms/Paragraph/Paragraph";
 import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
 import plusIcon from "assets/icons/plus.svg";
 import NewItemBar from "components/organisms/NewItemBar/NewItemBar";
+import withContext from "hoc/withContext";
 
 const StyledWrapper = styled.div`
-  padding: 25px 150px 25px 200px;
+  padding: 25px 150px 25px 70px;
 `;
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 85px;
+
+  @media (min-width: 850px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const StyledPageHeader = styled.div`
@@ -58,23 +63,23 @@ class GridTemplate extends Component {
   };
 
   render() {
-    const { pageType, children } = this.props;
+    const { appContext, children } = this.props;
     const { isNewItemBarVisible } = this.state;
 
     return (
-      <UserPageTemplate pageType={pageType}>
+      <UserPageTemplate>
         <StyledWrapper>
           <StyledPageHeader>
             <Input search placeholder="Search" />
             <StyledHeading big as="h1">
-              {pageType}s
+              {appContext}
             </StyledHeading>
-            <StyledParagraph> 6 {pageType}s</StyledParagraph>
+            <StyledParagraph> 6 {appContext}</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon
             icon={plusIcon}
-            activeColor={pageType}
+            activeColor={appContext}
             onClick={this.handleNewItemBarToggle}
           />
           <NewItemBar isVisible={isNewItemBarVisible}></NewItemBar>
@@ -84,13 +89,13 @@ class GridTemplate extends Component {
   }
 }
 
-UserPageTemplate.propTypes = {
+GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
+  appContext: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
 };
 
-UserPageTemplate.defaultProps = {
-  pageType: "notes",
+GridTemplate.defaultProps = {
+  appContext: "notes",
 };
 
-export default GridTemplate;
+export default withContext(GridTemplate);

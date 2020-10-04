@@ -1,13 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
+import articleIcon from "assets/icons/article.svg";
+import logoutIcon from "assets/icons/logout.svg";
 import penIcon from "assets/icons/pen.svg";
 import projectIcon from "assets/icons/project.svg";
-import LogoutIcon from "assets/icons/logout.svg";
-import articleIcon from "assets/icons/article.svg";
 import logoIcon from "assets/icons/head.svg";
+import withContext from "hoc/withContext";
 
 const StyledWrapper = styled.nav`
   position: fixed;
@@ -17,14 +18,14 @@ const StyledWrapper = styled.nav`
   width: 150px;
   height: 100vh;
   background-color: ${({ activeColor, theme }) =>
-    activeColor ? theme[activeColor] : theme.notes};
+    activeColor ? theme[activeColor] : theme.note};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 `;
 
-const StyledLogoLinks = styled(NavLink)`
+const StyledLogoLink = styled(NavLink)`
   display: block;
   width: 67px;
   height: 67px;
@@ -36,39 +37,56 @@ const StyledLogoLinks = styled(NavLink)`
   margin-bottom: 10vh;
 `;
 
-const StyledLinkList = styled.ul`
+const StyledLogoutButton = styled(ButtonIcon)`
+  margin-top: auto;
+`;
+
+const StyledLinksList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
 `;
 
-const StyledLogoutButton = styled(ButtonIcon)`
-  margin-top: auto;
-`;
-
-const Sidebar = ({ pageType }) => (
-  <StyledWrapper activeColor={pageType}>
-    <StyledLogoLinks to="/" icon={logoIcon} />
-    <StyledLinkList>
+const Sidebar = ({ appContext }) => (
+  <StyledWrapper activeColor={appContext}>
+    <StyledLogoLink to="/" />
+    <StyledLinksList>
+      <li> {appContext}</li>
       <li>
-        <ButtonIcon exact as={NavLink} to="/" icon={penIcon} />
+        <ButtonIcon
+          as={NavLink}
+          to="/notes"
+          icon={penIcon}
+          activeclass="active"
+        />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/devarticles" icon={articleIcon} />
+        <ButtonIcon
+          as={NavLink}
+          to="/devarticles"
+          icon={articleIcon}
+          activeclass="active"
+        />
       </li>
       <li>
-        <ButtonIcon as={NavLink} to="/devprojects" icon={projectIcon} />
+        <ButtonIcon
+          as={NavLink}
+          to="/devprojects"
+          icon={projectIcon}
+          activeclass="active"
+        />
       </li>
-    </StyledLinkList>
-    <StyledLogoutButton as={NavLink} to="/login" icon={LogoutIcon} />
+    </StyledLinksList>
+    <StyledLogoutButton as={NavLink} to="/login" icon={logoutIcon} />
   </StyledWrapper>
 );
 
 Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
+  appContext: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
 };
 
 Sidebar.defaultProps = {
-  pageType: "notes",
+  appContext: "notes",
 };
-export default Sidebar;
+
+export default withContext(Sidebar);

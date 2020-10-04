@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Input from "components/atoms/Input/Input";
 import Button from "components/atoms/Button/Button";
 import Heading from "components/atoms/Heading/Heading";
+import withContext from "hoc/withContext";
 
 const StyledWrapper = styled.div`
   border-left: 10px solid
@@ -33,26 +34,26 @@ const StyledInput = styled(Input)`
   margin-top: 30px;
 `;
 
-const NewItemBar = ({ postType, isVisible }) => (
-  <StyledWrapper activeColor={postType} isVisible={isVisible}>
-    <Heading postType={postType}>Create new {postType} </Heading>
+const NewItemBar = ({ appContext, isVisible }) => (
+  <StyledWrapper activeColor={appContext} isVisible={isVisible}>
+    <Heading>Create new {appContext} </Heading>
     <Input placeholder="title" />
-    {postType === "devarticles" && <StyledInput placeholder="link" />}
+    {appContext === "devarticles" && <StyledInput placeholder="link" />}
     <StyledTextArea
       as="textarea"
-      placeholder={postType === "devproject" ? "name of project" : "title"}
+      placeholder={appContext === "devprojects" ? "name of project" : "title"}
     />
-    <Button activeColor={postType}>Add Note</Button>
+    <Button activeColor={appContext}>Add {appContext}</Button>
   </StyledWrapper>
 );
 
 NewItemBar.propTypes = {
-  pageType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
+  appContext: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
   isVisible: PropTypes.bool,
 };
 
 NewItemBar.defaultProps = {
-  pageType: "notes",
+  appContext: "notes",
   isVisible: false,
 };
-export default NewItemBar;
+export default withContext(NewItemBar);

@@ -16,7 +16,8 @@ const Button = styled.button`
   ${({ secondary }) =>
     secondary &&
     css`
-      background-color: hsl(34, 80%, 82%);
+      background-color: ${({ activeColor, theme }) =>
+        activeColor ? theme[activeColor] : theme.notes};
       width: 105px;
       height: 30px;
       font-size: 10px;
@@ -25,7 +26,8 @@ const Button = styled.button`
   ${({ tertiary }) =>
     tertiary &&
     css`
-      background-color: hsl(115, 72%, 87%);
+      background-color: ${({ activeColor, theme }) =>
+        activeColor ? theme[activeColor] : theme.notes};
       width: 120px;
       height: 35px;
       font-size: 10px;

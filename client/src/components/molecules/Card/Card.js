@@ -71,13 +71,12 @@ class Card extends Component {
   render() {
     const {
       id,
-      cardType,
       created,
       name,
       articleUrl,
       content,
       title,
-      pageType,
+      cardType,
     } = this.props;
     const { redirect } = this.state;
     if (redirect) {
@@ -88,16 +87,14 @@ class Card extends Component {
         <InnerWrapper activeColor={cardType}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
-          {cardType === "dev_articles" && (
-            <StyledLinkButton href={articleUrl} />
-          )}
-          {cardType === "dev_projects" && (
+          {cardType === "devarticles" && <StyledLinkButton href={articleUrl} />}
+          {cardType === "devprojects" && (
             <StyledParagraph>Responsible: {name}</StyledParagraph>
           )}
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button secondary activeColor={pageType}>
+          <Button secondary activeColor={cardType}>
             REMOVE
           </Button>
         </InnerWrapper>
@@ -111,7 +108,6 @@ Card.propTypes = {
   cardType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
-  name: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
 };
