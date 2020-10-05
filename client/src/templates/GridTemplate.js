@@ -51,6 +51,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50px;
   z-index: 10000;
 `;
+
 class GridTemplate extends Component {
   state = {
     isNewItemBarVisible: false,
