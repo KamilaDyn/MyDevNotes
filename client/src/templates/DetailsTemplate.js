@@ -33,8 +33,9 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  margin: 0;
+  margin: 20px 0;
   font-weight: ${({ theme }) => theme.bold};
+  color: ${({ theme }) => theme.red};
 `;
 
 const StyledLink = styled.a`
@@ -44,6 +45,11 @@ const StyledLink = styled.a`
   color: black;
   text-transform: uppercase;
   margin: 20px 0 50px;
+`;
+
+const StyledButton = styled(Button)`
+  background-color: ${({ activeColor, theme }) =>
+    activeColor ? theme[activeColor] : theme.notes};
 `;
 
 const DetailsTemplate = ({
@@ -64,14 +70,18 @@ const DetailsTemplate = ({
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
       {appContext === "devarticles" && (
-        <StyledLink href={articleUrl}>Open article</StyledLink>
+        <StyledLink href={articleUrl} target="_blank">
+          Open article
+        </StyledLink>
       )}
       {appContext === "devprojects" && (
-        <StyledParagraph>Responsible: {name}</StyledParagraph>
+        <StyledParagraph>
+          Person who is responsible for projects: {name}
+        </StyledParagraph>
       )}
-      <Button as={Link} to={`/${appContext}`} activeColor={appContext}>
+      <StyledButton as={Link} to={`/${appContext}`}>
         save / close
-      </Button>
+      </StyledButton>
     </StyledWrapper>
   </UserPageTemplate>
 );

@@ -51,7 +51,6 @@ const Sidebar = ({ appContext }) => (
   <StyledWrapper activeColor={appContext}>
     <StyledLogoLink to="/" />
     <StyledLinksList>
-      <li> {appContext}</li>
       <li>
         <ButtonIcon
           as={NavLink}

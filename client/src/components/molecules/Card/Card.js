@@ -64,9 +64,22 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.onDelete = this.onDelete.bind(this);
+    console.log(props.id);
+  }
   state = {
     redirect: false,
+    isDeleted: false,
   };
+
+  async onDelete() {
+    const itemId = this.props.id;
+
+    const element = document.getElementById(itemId);
+    element.remove();
+  }
   handleCardClick = () => this.setState({ redirect: true });
   render() {
     const {
@@ -83,7 +96,7 @@ class Card extends Component {
       return <Redirect to={`${cardType}/${id}`} />;
     }
     return (
-      <StyledWrapper onClick={this.handleCardClick}>
+      <StyledWrapper id={id}>
         <InnerWrapper activeColor={cardType}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
@@ -94,7 +107,10 @@ class Card extends Component {
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button secondary activeColor={cardType}>
+          <StyledParagraph secondary onClick={this.handleCardClick}>
+            Read more
+          </StyledParagraph>
+          <Button secondary activeColor={cardType} onClick={this.onDelete}>
             REMOVE
           </Button>
         </InnerWrapper>
