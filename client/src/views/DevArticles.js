@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import GridTemplate from "templates/GridTemplate";
 import Card from "components/molecules/Card/Card";
 
-const DevArticles = ({ devArticles }) => (
+const DevArticles = ({ devarticles }) => (
   <GridTemplate>
-    {devArticles.map(({ title, content, articleUrl, created, id }) => (
+    {devarticles.map(({ title, content, articleUrl, created, id }) => (
       <Card
         title={title}
         content={content}
@@ -32,11 +32,11 @@ DevArticles.propTypes = {
 };
 
 DevArticles.defaulProps = {
-  devArticles: [],
+  devarticles: [],
 };
 const mapStateToProps = (state) => {
-  const { devArticles } = state;
-  return { devArticles };
+  const { devarticles } = state;
+  return { devarticles };
 };
 
 export default connect(mapStateToProps)(DevArticles);
