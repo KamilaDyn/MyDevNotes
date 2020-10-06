@@ -5,7 +5,10 @@ import styled, { css } from "styled-components";
 import Paragraph from "components/atoms/Paragraph/Paragraph";
 import Heading from "components/atoms/Heading/Heading";
 import Button from "components/atoms/Button/Button";
+import { connect } from "react-redux";
+import withContext from "hoc/withContext";
 import LinkIcon from "assets/icons/url.svg";
+import { removeItem as removeItemAction } from "actions";
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -64,20 +67,16 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.onDelete = this.onDelete.bind(this);
-  }
   state = {
     redirect: false,
     isDeleted: false,
   };
 
-  async onDelete() {
-    const itemId = this.props.id;
-    const element = document.getElementById(itemId);
-    element.remove();
-  }
+  // onDelete() {
+  //   const itemId = this.props.id;
+  //   const element = document.getElementById(itemId);
+  //   element.remove();
+  // }
   handleCardClick = () => this.setState({ redirect: true });
   render() {
     const {
@@ -87,19 +86,22 @@ class Card extends Component {
       articleUrl,
       content,
       title,
-      cardType,
+      appContext,
+      removeItem,
     } = this.props;
     const { redirect } = this.state;
     if (redirect) {
-      return <Redirect to={`${cardType}/${id}`} />;
+      return <Redirect to={`${appContext}/${id}`} />;
     }
     return (
       <StyledWrapper id={id}>
-        <InnerWrapper activeColor={cardType}>
+        <InnerWrapper activeColor={appContext}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
-          {cardType === "devarticles" && <StyledLinkButton href={articleUrl} />}
-          {cardType === "devprojects" && (
+          {appContext === "devarticles" && (
+            <StyledLinkButton href={articleUrl} />
+          )}
+          {appContext === "devprojects" && (
             <StyledParagraph>Responsible: {name}</StyledParagraph>
           )}
         </InnerWrapper>
@@ -108,7 +110,11 @@ class Card extends Component {
           <StyledParagraph secondary onClick={this.handleCardClick}>
             Read more
           </StyledParagraph>
-          <Button secondary activeColor={cardType} onClick={this.onDelete}>
+          <Button
+            secondary
+            activeColor={appContext}
+            onClick={() => removeItem(appContext, id)}
+          >
             REMOVE
           </Button>
         </InnerWrapper>
@@ -119,7 +125,7 @@ class Card extends Component {
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
-  cardType: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
+  appContext: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   articleUrl: PropTypes.string,
@@ -127,9 +133,13 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  cardType: "notes",
+  appContext: "notes",
   name: null,
   articleUrl: null,
 };
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
+});
+
+export default connect(null, mapDispatchToProps)(withContext(Card));
