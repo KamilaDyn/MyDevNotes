@@ -124,7 +124,6 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  id: PropTypes.number.isRequired,
   appContext: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
