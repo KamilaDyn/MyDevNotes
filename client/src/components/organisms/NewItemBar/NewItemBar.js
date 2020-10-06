@@ -6,6 +6,8 @@ import Button from "components/atoms/Button/Button";
 import Heading from "components/atoms/Heading/Heading";
 import withContext from "hoc/withContext";
 import { Formik, Form } from "formik";
+import { connect } from "react-redux";
+import { addItem as addItemAction } from "actions";
 
 const StyledWrapper = styled.div`
   border-left: 10px solid
@@ -48,23 +50,30 @@ let date = ` ${d.getDate() < 0 ? `0${d.getDate()}` : d.getDate()}/${
   d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1
 }/${d.getFullYear()}`;
 
-const addItem = (values) => {
-  console.log(values);
-};
-const NewItemBar = ({ isVisible, appContext, handleClose }) => (
+const NewItemBar = ({ appContext, isVisible, addItem, handleClose }) => (
   <StyledWrapper isVisible={isVisible} activeColor={appContext}>
     <Heading big>Create new {appContext}</Heading>
     <Formik
+      autoComplete="off"
       initialValues={{
         title: "",
         content: "",
         articleUrl: "",
+        name: "",
         created: date,
-        projectName: "",
       }}
-      onSubmit={(values) => {
-        addItem(values, appContext);
+      onSubmit={(values, actions) => {
+        addItem(appContext, values);
         handleClose();
+        actions.resetForm({
+          values: {
+            title: "",
+            content: "",
+            articleUrl: "",
+            name: "",
+            created: date,
+          },
+        });
       }}
     >
       {({ values, handleChange, handleBlur }) => (
@@ -79,17 +88,17 @@ const NewItemBar = ({ isVisible, appContext, handleClose }) => (
           />
           {appContext === "devprojects" && (
             <StyledInput
-              placeholder="responsible person"
+              placeholder="person responsible"
               type="text"
-              name="projectName"
+              name="name"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.projectName}
+              value={values.name}
             />
           )}
           {appContext === "devarticles" && (
             <StyledInput
-              placeholder="article link"
+              placeholder="link"
               type="text"
               name="articleUrl"
               onChange={handleChange}
@@ -103,23 +112,31 @@ const NewItemBar = ({ isVisible, appContext, handleClose }) => (
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.content}
+            placeholder="description"
           />
-          <StyledButton type="submit" activeColor={appContext}>
-            Add {appContext}
-          </StyledButton>
+          <Button type="submit" activeColor={appContext}>
+            Add Note
+          </Button>
         </StyledForm>
       )}
     </Formik>
   </StyledWrapper>
 );
-
 NewItemBar.propTypes = {
   appContext: PropTypes.oneOf(["notes", "devarticles", "devprojects"]),
   isVisible: PropTypes.bool,
+  addItem: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 NewItemBar.defaultProps = {
   appContext: "notes",
   isVisible: false,
 };
-export default withContext(NewItemBar);
+
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (itemType, itemContent) =>
+    dispatch(addItemAction(itemType, itemContent)),
+});
+
+export default connect(null, mapDispatchToProps)(withContext(NewItemBar));
