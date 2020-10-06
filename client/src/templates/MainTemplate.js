@@ -33,6 +33,9 @@ class MainTemplate extends Component {
     }
   };
 
+  // axios.get('http://localhost:3000/devarticles')
+  // .then(response=> console.log(response));
+
   render() {
     const { children } = this.props;
     const { pageType } = this.state;
