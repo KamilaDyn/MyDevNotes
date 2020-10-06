@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import MainTemplate from "templates/MainTemplate";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Provider } from "react-redux";
+import { routes } from "routes";
 import DevArticles from "views/DevArticles";
 import DevProjects from "views/DevProjects";
 import Notes from "views/Notes";
 import DetailsPage from "views/DetailsPage";
 import axios from "axios";
-import { routes } from "routes";
-import AppContext from "appcontext";
+import store from "store";
 
 class Root extends Component {
   state = {
@@ -26,27 +27,26 @@ class Root extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    const contextElement = {
-      ...this.state,
-    };
     return (
-      <BrowserRouter>
-        <MainTemplate>
-          <Switch>
-            <Route
-              exact
-              path={routes.home}
-              render={() => <Redirect to="/notes" />}
-            />
-            <Route exact path={routes.notes} component={Notes} />
-            <Route path={routes.note} component={DetailsPage} />
-            <Route exact path={routes.devarticles} component={DevArticles} />
-            <Route path={routes.devarticle} component={DetailsPage} />
-            <Route exact path={routes.devprojects} component={DevProjects} />
-            <Route path={routes.devproject} component={DetailsPage} />
-          </Switch>
-        </MainTemplate>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <MainTemplate>
+            <Switch>
+              <Route
+                exact
+                path={routes.home}
+                render={() => <Redirect to="/notes" />}
+              />
+              <Route exact path={routes.notes} component={Notes} />
+              <Route path={routes.note} component={DetailsPage} />
+              <Route exact path={routes.devarticles} component={DevArticles} />
+              <Route path={routes.devarticle} component={DetailsPage} />
+              <Route exact path={routes.devprojects} component={DevProjects} />
+              <Route path={routes.devproject} component={DetailsPage} />
+            </Switch>
+          </MainTemplate>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
