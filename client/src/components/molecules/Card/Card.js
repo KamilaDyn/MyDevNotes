@@ -67,7 +67,6 @@ class Card extends Component {
   constructor(props) {
     super(props);
     this.onDelete = this.onDelete.bind(this);
-    console.log(props.id);
   }
   state = {
     redirect: false,
@@ -76,7 +75,6 @@ class Card extends Component {
 
   async onDelete() {
     const itemId = this.props.id;
-
     const element = document.getElementById(itemId);
     element.remove();
   }
