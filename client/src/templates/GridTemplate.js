@@ -9,6 +9,7 @@ import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
 import plusIcon from "assets/icons/plus.svg";
 import NewItemBar from "components/organisms/NewItemBar/NewItemBar";
 import withContext from "hoc/withContext";
+import axios from "axios";
 
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
@@ -83,7 +84,10 @@ class GridTemplate extends Component {
             activeColor={appContext}
             onClick={this.handleNewItemBarToggle}
           />
-          <NewItemBar isVisible={isNewItemBarVisible}></NewItemBar>
+          <NewItemBar
+            handleClose={this.handleNewItemBarToggle}
+            isVisible={isNewItemBarVisible}
+          />
         </StyledWrapper>
       </UserPageTemplate>
     );
