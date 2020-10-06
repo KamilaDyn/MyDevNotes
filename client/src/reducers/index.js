@@ -29,7 +29,7 @@ const initialState = {
       created: "10 days",
     },
   ],
-  devArticles: [
+  devarticles: [
     {
       id: 1,
       title: "React in 5h ",
@@ -67,7 +67,7 @@ const initialState = {
       created: "10 days",
     },
   ],
-  devProjects: [
+  devprojects: [
     {
       id: 1,
       title: "Vue.js ",
@@ -104,8 +104,19 @@ const initialState = {
 };
 
 const RootReducer = (state = initialState, action) => {
-  console.log(action);
-  return state;
+  switch (action.type) {
+    case "REMOVE_ITEM":
+      return {
+        ...state,
+        [action.payload.itemType]: [
+          ...state[action.payload.itemType].filter(
+            (item) => item.id !== action.payload.id
+          ),
+        ],
+      };
+    default:
+      return state;
+  }
 };
 
 export default RootReducer;
