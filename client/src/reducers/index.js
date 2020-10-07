@@ -1,17 +1,20 @@
+// import { ADD_ITEM, REMOVE_ITEM, FILTER_ITEM } from "actions";
+
 const initialState = {
+  textSearch: "",
   notes: [
     {
       id: 1,
       title: "React make me laught",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
+        "Lorem ipsum dolojdjmakair sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animiLorem ipsum dolojdjmakair sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi. Lorem ipsum dolojdjmakair sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
       created: "1 day",
     },
     {
       id: 2,
       title: "Wie ist React?",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
+        "Lorem ipsum dolor sit amet consecteturkdkdkdkkd adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
       created: "1 day",
     },
     {
@@ -25,7 +28,7 @@ const initialState = {
       id: 4,
       title: "My React to that",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam njsmsl.snjdj  ndhuene esse adipisci, dolore odit animi",
       created: "10 days",
     },
   ],
@@ -34,7 +37,7 @@ const initialState = {
       id: 1,
       title: "React in 5h ",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,ndnme. ejj,djfnatus modi tempore esse adipisci, dolore odit animi",
       articleUrl:
         "https://www.youtube.com/watch?v=DLX62G4lc44&ab_channel=freeCodeCamp.org",
       created: "1 day",
@@ -74,7 +77,7 @@ const initialState = {
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
       created: "1 day",
-      name: "hello_roman",
+      name: "Anna_karenina",
     },
     {
       id: 2,
@@ -105,6 +108,18 @@ const initialState = {
 
 const RootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "FILTER_ITEM":
+      return {
+        ...state,
+      };
+    case "ADD_ITEM":
+      return {
+        ...state,
+        [action.payload.itemType]: [
+          ...state[action.payload.itemType],
+          action.payload.item,
+        ],
+      };
     case "REMOVE_ITEM":
       return {
         ...state,
@@ -114,6 +129,7 @@ const RootReducer = (state = initialState, action) => {
           ),
         ],
       };
+
     default:
       return state;
   }

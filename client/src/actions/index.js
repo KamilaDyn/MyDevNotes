@@ -8,6 +8,32 @@ export const removeItem = (itemType, id) => {
   };
 };
 
-export const addItem = (itemType, id) => {
-  return console.log("add");
+export const addItem = (itemType, itemContent) => {
+  const getId = () => `_${Math.random().toString(36).substr(2, 9)}`;
+
+  // dispatch({type: 'ADD_ITEM_REQUEST'})
+  // return axios('blabla', 'getState().').then(response => dispatch({ type: 'ADD_ITEM_SUCCESS', response})).catch()
+
+  return {
+    type: "ADD_ITEM",
+    payload: {
+      itemType,
+      item: {
+        id: getId(),
+        ...itemContent,
+      },
+    },
+  };
+};
+
+export const filterItems = (itemType, title) => {
+  return {
+    type: "FILTER_ITEM",
+    payload: {
+      itemType,
+      item: {
+        title,
+      },
+    },
+  };
 };
