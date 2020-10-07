@@ -14,10 +14,13 @@ const StyledWrapper = styled.div`
   min-height: 380px;
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
-  overflow: hidden;
   position: relative;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
+
+  @media (min-width: 850px) {
+    overflow: hidden;
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -71,12 +74,6 @@ class Card extends Component {
     redirect: false,
     isDeleted: false,
   };
-
-  // onDelete() {
-  //   const itemId = this.props.id;
-  //   const element = document.getElementById(itemId);
-  //   element.remove();
-  // }
   handleCardClick = () => this.setState({ redirect: true });
   render() {
     const {
@@ -93,6 +90,9 @@ class Card extends Component {
     if (redirect) {
       return <Redirect to={`${appContext}/${id}`} />;
     }
+    const maxLenght = 150;
+    console.log(content.length);
+
     return (
       <StyledWrapper id={id}>
         <InnerWrapper activeColor={appContext}>
@@ -106,10 +106,19 @@ class Card extends Component {
           )}
         </InnerWrapper>
         <InnerWrapper flex>
-          <Paragraph>{content}</Paragraph>
-          <StyledParagraph secondary onClick={this.handleCardClick}>
-            Read more
-          </StyledParagraph>
+          {content.length > maxLenght ? (
+            <Paragraph>{`${content.substring(0, maxLenght)}...`}</Paragraph>
+          ) : (
+            <Paragraph>{content}</Paragraph>
+          )}
+          {content.length > maxLenght ? (
+            <StyledParagraph secondary onClick={this.handleCardClick}>
+              Read more
+            </StyledParagraph>
+          ) : (
+            ""
+          )}
+
           <Button
             secondary
             activeColor={appContext}
