@@ -94,7 +94,6 @@ class Card extends Component {
       return <Redirect to={`${appContext}/${id}`} />;
     }
     const maxLenght = 150;
-    console.log(content.length);
 
     return (
       <StyledWrapper id={id}>
@@ -104,7 +103,7 @@ class Card extends Component {
             <DateInfo>{created}</DateInfo>
           </WrapperHeading>
           {appContext === "devarticles" && (
-            <StyledLinkButton href={articleUrl} />
+            <StyledLinkButton href={articleUrl} target="_blank" />
           )}
           {appContext === "devprojects" && (
             <StyledParagraph>Responsible: {name}</StyledParagraph>
