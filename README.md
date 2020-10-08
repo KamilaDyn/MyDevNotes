@@ -37,7 +37,7 @@ Still in progress, but MVP is ready.
 
 ## Demo View
 
-<img src="./demo/demo.gif" width="500" height="400" />
+<img src="./client/demo/demo.gif" width="500" height="400" />
 
 ### Installing
 
