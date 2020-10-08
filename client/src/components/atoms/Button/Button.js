@@ -36,7 +36,8 @@ const Button = styled.button`
     ${({ close }) =>
       close &&
       css`
-        background: ${({ activeColor, theme }) =>
+        padding: 25px;
+        background-color: ${({ activeColor, theme }) =>
           activeColor ? theme[activeColor] : theme.notes};
         width: 50px;
         height: 50px;
