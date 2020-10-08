@@ -9,6 +9,7 @@ import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
 import plusIcon from "assets/icons/plus.svg";
 import NewItemBar from "components/organisms/NewItemBar/NewItemBar";
 import withContext from "hoc/withContext";
+import Backdrop from "components/organisms/Backdrop/Backdrop";
 import { connect } from "react-redux";
 import { filterItems as filterItemsAction } from "actions";
 
@@ -74,6 +75,15 @@ class GridTemplate extends Component {
   };
 
   render() {
+    let backdrop;
+    if (this.state.isNewItemBarVisible) {
+      backdrop = (
+        <Backdrop
+          onClick={this.handleNewItemBarToggle}
+          style={{ display: this.state.displayitem }}
+        />
+      );
+    }
     const { appContext, children, filterItems } = this.props;
     const { isNewItemBarVisible } = this.state;
     // const filteredItems = filterItems(appContext);
@@ -101,6 +111,7 @@ class GridTemplate extends Component {
             handleClose={this.handleNewItemBarToggle}
             isVisible={isNewItemBarVisible}
           />
+          {backdrop}
         </StyledWrapper>
       </UserPageTemplate>
     );

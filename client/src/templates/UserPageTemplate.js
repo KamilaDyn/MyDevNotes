@@ -32,7 +32,6 @@ class UserPageTemplate extends Component {
   };
 
   menuClicked = () => {
-    console.log("works");
     this.setState((prevState) => ({
       isSidebarOpen: !prevState.isSidebarOpen,
       displayitem: "block",
@@ -58,7 +57,6 @@ class UserPageTemplate extends Component {
 
     const { children, appContext } = this.props;
     const { isSidebarOpen } = this.state;
-    console.log(isSidebarOpen);
     return (
       <StyledWrapper>
         <StyledButtonIcon
