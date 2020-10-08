@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { routes } from "routes";
 import DevArticles from "views/DevArticles";
 import DevProjects from "views/DevProjects";
+import LoginPage from "views/LoginPage";
 import Notes from "views/Notes";
 import DetailsPage from "views/DetailsPage";
 import axios from "axios";
@@ -43,6 +44,7 @@ class Root extends Component {
               <Route path={routes.devarticle} component={DetailsPage} />
               <Route exact path={routes.devprojects} component={DevProjects} />
               <Route path={routes.devproject} component={DetailsPage} />
+              <Route exact path={routes.login} component={LoginPage} />
             </Switch>
           </MainTemplate>
         </BrowserRouter>

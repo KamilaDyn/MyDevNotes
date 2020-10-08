@@ -9,10 +9,14 @@ import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
 import plusIcon from "assets/icons/plus.svg";
 import NewItemBar from "components/organisms/NewItemBar/NewItemBar";
 import withContext from "hoc/withContext";
-import axios from "axios";
+import { connect } from "react-redux";
+import { filterItems as filterItemsAction } from "actions";
 
 const StyledWrapper = styled.div`
-  padding: 25px 150px 25px 70px;
+  padding: 25px;
+  @media (min-width: 850px) {
+    padding: 25px 150px 25px 70px;
+  }
 `;
 
 const StyledGrid = styled.div`
@@ -56,6 +60,11 @@ const StyledButtonIcon = styled(ButtonIcon)`
 class GridTemplate extends Component {
   state = {
     isNewItemBarVisible: false,
+    search: "",
+  };
+
+  handleSearch = (e) => {
+    this.setState({ search: e.target.value.substr(0, 20) });
   };
 
   handleNewItemBarToggle = () => {
@@ -65,18 +74,22 @@ class GridTemplate extends Component {
   };
 
   render() {
-    const { appContext, children } = this.props;
+    const { appContext, children, filterItems } = this.props;
     const { isNewItemBarVisible } = this.state;
+    // const filteredItems = filterItems(appContext);
+    // console.log(filteredItems); // add map fn
 
     return (
       <UserPageTemplate>
         <StyledWrapper>
           <StyledPageHeader>
-            <Input search placeholder="Search" />
+            <Input {...this.state} handleSearch={this.handleSearch} />
             <StyledHeading big as="h1">
               {appContext}
             </StyledHeading>
-            <StyledParagraph> 6 {appContext}</StyledParagraph>
+            <StyledParagraph>
+              <span>{children.length}</span> {appContext}
+            </StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon
@@ -103,4 +116,9 @@ GridTemplate.defaultProps = {
   appContext: "notes",
 };
 
-export default withContext(GridTemplate);
+const mapDispatchToProps = (dispatch) => ({
+  filterItems: (itemType, title) =>
+    dispatch(filterItemsAction(itemType, title)),
+});
+
+export default connect(null, mapDispatchToProps)(withContext(GridTemplate));

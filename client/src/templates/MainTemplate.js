@@ -29,12 +29,8 @@ class MainTemplate extends Component {
 
     if (prevState.pageType !== currentPage) {
       this.setState({ pageType: currentPage });
-      console.log(this.state);
     }
   };
-
-  // axios.get('http://localhost:3000/devarticles')
-  // .then(response=> console.log(response));
 
   render() {
     const { children } = this.props;
