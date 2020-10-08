@@ -30,7 +30,7 @@ class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter basename="/MyDevNotes/#">
+        <BrowserRouter basename="/my-dev-notes/#">
           <MainTemplate>
             <Switch>
               <Route

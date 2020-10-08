@@ -93,7 +93,14 @@ class GridTemplate extends Component {
       <UserPageTemplate>
         <StyledWrapper>
           <StyledPageHeader>
-            <Input {...this.state} handleSearch={this.handleSearch} />
+            <Input
+              search
+              type="text"
+              name="search"
+              placeholder="search"
+              value=""
+              onChange={this.handleSearch}
+            />
             <StyledHeading big as="h1">
               {appContext}
             </StyledHeading>

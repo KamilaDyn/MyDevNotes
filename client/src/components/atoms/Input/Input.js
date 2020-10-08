@@ -5,7 +5,7 @@ import withContext from "hoc/withContext";
 
 // import magnifierIcon from 'assets/icons/magnifier.svg';
 
-const StyledInput = styled.input`
+const Input = styled.input`
   padding: 15px 30px;
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.regular};
@@ -31,21 +31,4 @@ const StyledInput = styled.input`
     `}
 `;
 
-const Input = ({ search, handleSearch }) => (
-  <StyledInput
-    search
-    type="text"
-    name="search"
-    placeholder="search"
-    value={search}
-    onChange={handleSearch}
-  />
-);
-
-// const mapDispatchToProps = (dispatch) => ({
-//   filterItems: (itemType, title) =>
-//     dispatch(filterItemsAction(itemType, title)),
-// });
-
-// export default connect(null, mapDispatchToProps)(withContext(Input));
-export default withContext(Input);
+export default Input;
