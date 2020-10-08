@@ -1,0 +1,24 @@
+.sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+@media (min-width: 850px) {
+  .sidebar {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.sidebar.open {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
