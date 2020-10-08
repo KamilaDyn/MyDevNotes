@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/MyDevNotes/static/css/main.f9bece5b.chunk.css",
-    "main.js": "/MyDevNotes/static/js/main.c7237e09.chunk.js",
-    "main.js.map": "/MyDevNotes/static/js/main.c7237e09.chunk.js.map",
-    "runtime-main.js": "/MyDevNotes/static/js/runtime-main.ad663efa.js",
-    "runtime-main.js.map": "/MyDevNotes/static/js/runtime-main.ad663efa.js.map",
-    "static/js/2.01cca122.chunk.js": "/MyDevNotes/static/js/2.01cca122.chunk.js",
-    "static/js/2.01cca122.chunk.js.map": "/MyDevNotes/static/js/2.01cca122.chunk.js.map",
-    "index.html": "/MyDevNotes/index.html",
-    "precache-manifest.e2a613c711e3f58c20fe639586cc193d.js": "/MyDevNotes/precache-manifest.e2a613c711e3f58c20fe639586cc193d.js",
-    "service-worker.js": "/MyDevNotes/service-worker.js",
-    "static/css/main.f9bece5b.chunk.css.map": "/MyDevNotes/static/css/main.f9bece5b.chunk.css.map",
-    "static/js/2.01cca122.chunk.js.LICENSE.txt": "/MyDevNotes/static/js/2.01cca122.chunk.js.LICENSE.txt",
-    "static/media/article.svg": "/MyDevNotes/static/media/article.5c28734f.svg",
-    "static/media/head.svg": "/MyDevNotes/static/media/head.a679bda1.svg",
-    "static/media/logout.svg": "/MyDevNotes/static/media/logout.b0292166.svg",
-    "static/media/menu.svg": "/MyDevNotes/static/media/menu.597d55c7.svg",
-    "static/media/pen.svg": "/MyDevNotes/static/media/pen.17ef7fd8.svg",
-    "static/media/plus.svg": "/MyDevNotes/static/media/plus.6a5fc102.svg",
-    "static/media/project.svg": "/MyDevNotes/static/media/project.aa24918d.svg",
-    "static/media/url.svg": "/MyDevNotes/static/media/url.a8f46d15.svg"
+    "main.css": "/baseUrlMyDevNotes/static/css/main.f9bece5b.chunk.css",
+    "main.js": "/baseUrlMyDevNotes/static/js/main.5f01ed66.chunk.js",
+    "main.js.map": "/baseUrlMyDevNotes/static/js/main.5f01ed66.chunk.js.map",
+    "runtime-main.js": "/baseUrlMyDevNotes/static/js/runtime-main.b1fe49ac.js",
+    "runtime-main.js.map": "/baseUrlMyDevNotes/static/js/runtime-main.b1fe49ac.js.map",
+    "static/js/2.7471fa21.chunk.js": "/baseUrlMyDevNotes/static/js/2.7471fa21.chunk.js",
+    "static/js/2.7471fa21.chunk.js.map": "/baseUrlMyDevNotes/static/js/2.7471fa21.chunk.js.map",
+    "index.html": "/baseUrlMyDevNotes/index.html",
+    "precache-manifest.4bcc8605d6abe780f8e004197af58b59.js": "/baseUrlMyDevNotes/precache-manifest.4bcc8605d6abe780f8e004197af58b59.js",
+    "service-worker.js": "/baseUrlMyDevNotes/service-worker.js",
+    "static/css/main.f9bece5b.chunk.css.map": "/baseUrlMyDevNotes/static/css/main.f9bece5b.chunk.css.map",
+    "static/js/2.7471fa21.chunk.js.LICENSE.txt": "/baseUrlMyDevNotes/static/js/2.7471fa21.chunk.js.LICENSE.txt",
+    "static/media/article.svg": "/baseUrlMyDevNotes/static/media/article.5c28734f.svg",
+    "static/media/head.svg": "/baseUrlMyDevNotes/static/media/head.a679bda1.svg",
+    "static/media/logout.svg": "/baseUrlMyDevNotes/static/media/logout.b0292166.svg",
+    "static/media/menu.svg": "/baseUrlMyDevNotes/static/media/menu.597d55c7.svg",
+    "static/media/pen.svg": "/baseUrlMyDevNotes/static/media/pen.17ef7fd8.svg",
+    "static/media/plus.svg": "/baseUrlMyDevNotes/static/media/plus.6a5fc102.svg",
+    "static/media/project.svg": "/baseUrlMyDevNotes/static/media/project.aa24918d.svg",
+    "static/media/url.svg": "/baseUrlMyDevNotes/static/media/url.a8f46d15.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ad663efa.js",
-    "static/js/2.01cca122.chunk.js",
+    "static/js/runtime-main.b1fe49ac.js",
+    "static/js/2.7471fa21.chunk.js",
     "static/css/main.f9bece5b.chunk.css",
-    "static/js/main.c7237e09.chunk.js"
+    "static/js/main.5f01ed66.chunk.js"
   ]
 }
