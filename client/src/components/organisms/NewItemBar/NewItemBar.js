@@ -28,7 +28,7 @@ const StyledWrapper = styled.div`
   transform: translate(${({ isVisible }) => (isVisible ? "0" : "100%")});
   transition: transform 0.25s ease-in-out;
   @media (min-width: 850px) {
-    padding: 100px 90px;
+    padding: 70px 90px;
   }
 `;
 
