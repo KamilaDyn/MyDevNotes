@@ -9,7 +9,7 @@ import Heading from "components/atoms/Heading/Heading";
 import withContext from "hoc/withContext";
 
 const StyledWrapper = styled.div`
-  padding: 25px 150px 25px 70px;
+  padding: 40px 30px 25px 70px;
   max-width: 50vw;
   position: relative;
 
@@ -64,7 +64,7 @@ const DetailsTemplate = ({
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading big as="h1">
-          {title} tytuł
+          {title}
         </StyledHeading>
         <StyledParagraph>{created}</StyledParagraph>
       </StyledPageHeader>

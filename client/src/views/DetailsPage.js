@@ -29,11 +29,10 @@ class DetailsPage extends Component {
   render() {
     const dummyArticle = {
       id: 1,
-      title: "Wake me up when Vue ends",
+      title: "Understanding React 'setState'",
       content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi",
-      articleUrl:
-        "https://www.youtube.com/watch?v=sBws8MSXN7A&ab_channel=TraversyMedia",
+        "React components can, and often do, have state. State can be anything, but think of things like whether a user is logged in or not and displaying the correct username based on which account is active. Or an array of blog posts. Or if a modal is open or not and which tab within it is active.React components with state render UI based on that state. When the state of components changes, so does the component UI. That makes understanding when and how to change the state of your component important. At the end of this tutorial, you should know how setState works, and be able to avoid common pitfalls that many of us hit when when learning React.",
+      articleUrl: "https://css-tricks.com/understanding-react-setstate/",
       created: "1 day",
       name: "me",
     };
