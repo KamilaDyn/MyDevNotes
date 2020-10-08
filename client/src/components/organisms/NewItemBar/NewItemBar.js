@@ -13,19 +13,30 @@ const StyledWrapper = styled.div`
   border-left: 10px solid
     ${({ activeColor, theme }) =>
       activeColor ? theme[activeColor] : theme.notes};
-  z-index: 9999;
+  z-index: 9999999;
   position: fixed;
   display: flex;
-  padding: 100px 90px;
+  padding: 20px 10px;
   flex-direction: column;
   right: 0;
   top: 0;
   height: 100vh;
-  width: 680px;
+  width: 90%;
+  max-width: 680px;
   background-color: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transform: translate(${({ isVisible }) => (isVisible ? "0" : "100%")});
   transition: transform 0.25s ease-in-out;
+  @media (min-width: 850px) {
+    padding: 100px 90px;
+  }
+`;
+
+const StyledHeading = styled(Heading)`
+  font-size: ${({ theme }) => theme.l};
+  @media (min-width: 850px) {
+    font-size: ${({ theme }) => theme.xl};
+  }
 `;
 const StyledForm = styled(Form)`
   display: flex;
@@ -50,7 +61,8 @@ let date = ` ${d.getDate() < 0 ? `0${d.getDate()}` : d.getDate()}/${
 
 const NewItemBar = ({ appContext, isVisible, addItem, handleClose }) => (
   <StyledWrapper isVisible={isVisible} activeColor={appContext}>
-    <Heading big>Create new {appContext}</Heading>
+    <Button close activeColor={appContext} onClick={handleClose} />
+    <StyledHeading>Create new {appContext}</StyledHeading>
     <Formik
       autoComplete="off"
       initialValues={{

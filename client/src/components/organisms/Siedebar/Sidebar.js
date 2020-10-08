@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ButtonIcon from "components/atoms/ButtonIcon/ButtonIcon";
 import articleIcon from "assets/icons/article.svg";
 import logoutIcon from "assets/icons/logout.svg";
