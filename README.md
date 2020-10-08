@@ -26,19 +26,22 @@ Still in progress, but MVP is ready.
 1. check/ add RWD, add some styles
 2. Details page.
 3. Log page / logout fn
-4. Add able to edit items.
+4. Add edit items.
 5. Add filter fn / search input.
-6. Backend / connect to mongo db
-7. Maybe add extra page for example coworkers contacts
-8. Maybe add JEST.
+6. Add validation in formik.
+7. Backend / connect to mongo db
+8. Maybe, add extra page, for example coworkers contacts
+9. Maybe, add JEST.
+
+... and maybe more 😄
 
 ## Demo View
 
-<!-- <img src="./demo/demo.gif" width="500" height="400" /> -->
+<img src="./demo/demo.gif" width="500" height="400" />
 
 ### Installing
 
-Tu start you need to install package in client folder npm install
+To start you need to install package in client folder npm install
 and also :
 
 npm install react-router-dom
