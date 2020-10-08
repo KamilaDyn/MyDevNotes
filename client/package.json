@@ -1,8 +1,8 @@
 {
+  "homepage": "http://kamiladyn.github.io/my-dev-notes",
   "name": "moja-aplikacja",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://KamilaDyn.github.io/MyDevNotes/",
   "dependencies": {
     "@storybook/addon-knobs": "^6.0.22",
     "@testing-library/jest-dom": "^4.2.4",
