@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Input from "components/atoms/Input/Input";
@@ -36,13 +36,11 @@ const StyledTextArea = styled(Input)`
   margin: 30px 0 40px;
   border-radius: 20px;
   height: 30vh;
+  padding: 10px;
+  border: 0.5px solid ${({ theme }) => theme.grey300};
 `;
 const StyledInput = styled(Input)`
-  margin-top: 10px;
-`;
-
-const StyledButton = styled(Button)`
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 let d = new Date();

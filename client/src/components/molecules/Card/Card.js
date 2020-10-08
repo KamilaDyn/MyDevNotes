@@ -30,7 +30,7 @@ const InnerWrapper = styled.div`
     activeColor ? theme[activeColor] : "white"};
 
   :first-of-type {
-    z-index: 9999;
+    z-index: 99;
   }
 
   ${({ flex }) =>
@@ -40,6 +40,9 @@ const InnerWrapper = styled.div`
       flex-direction: column;
       justify-content: space-between;
     `}
+`;
+const WrapperHeading = styled.div`
+  width: calc(100% - 47px);
 `;
 
 const DateInfo = styled(Paragraph)`
@@ -96,8 +99,10 @@ class Card extends Component {
     return (
       <StyledWrapper id={id}>
         <InnerWrapper activeColor={appContext}>
-          <StyledHeading>{title}</StyledHeading>
-          <DateInfo>{created}</DateInfo>
+          <WrapperHeading>
+            <StyledHeading>{title}</StyledHeading>
+            <DateInfo>{created}</DateInfo>
+          </WrapperHeading>
           {appContext === "devarticles" && (
             <StyledLinkButton href={articleUrl} />
           )}
